@@ -2,9 +2,11 @@ package pro.sky.java.course2.transport;
 // D - обобщенный (параметризованный) тип данных. Клас Truck реализует интерфейс Гонщик (соревнующийся) для Truck.
 public class Truck<D extends Driver> extends Transport implements Racer{
     private D driver;
-    public Truck(String brand, String model, double engineVolume, D driver) {
+    private TruckLoadCapacity truckLoadCapacity;
+    public Truck(String brand, String model, double engineVolume, D driver, TruckLoadCapacity truckLoadCapacity) {
         super(brand, model, engineVolume);
         this.driver = setDriver(driver);
+        this.truckLoadCapacity = truckLoadCapacity;
     }
     @Override
     public void printPitStop() {
@@ -29,6 +31,16 @@ public class Truck<D extends Driver> extends Transport implements Racer{
     public void stop() {
         System.out.println("Грузовик остановил движение.");
     }
+
+    @Override
+    public void printType() {
+        if (getTruckLoadCapacity() == null) {
+            System.out.println("Данных по транспортному средству недостаточно.");
+        } else {
+            System.out.println(getTruckLoadCapacity());
+        }
+    }
+
     public D getDriver() {
         return driver;
     }
@@ -36,6 +48,11 @@ public class Truck<D extends Driver> extends Transport implements Racer{
     public D setDriver(D driver) {
         return driver;
     }
+
+    public TruckLoadCapacity getTruckLoadCapacity() {
+        return truckLoadCapacity;
+    }
+
     @Override
     public String toString() {
         return "Грузовик: " + super.toString();
