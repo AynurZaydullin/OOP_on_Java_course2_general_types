@@ -1,18 +1,16 @@
 package pro.sky.java.course2.transport;
 
-public abstract class Transport<D extends Driver> {// D - обобщенный (параметризованный) тип данных.
+public abstract class Transport {
     private String brand;
     private String model;
     private double engineVolume;
-    private D driver;
     public abstract void start();  // метод "Начать движение"
     public abstract void stop();  // метод "Закончить движение"
 
-    public Transport(String brand, String model, double engineVolume, D driver) {
+    public Transport(String brand, String model, double engineVolume) {
         this.brand = brand;
         this.model = model;
         this.engineVolume = engineVolume;
-        this.driver = setDriver(driver);
     }
     public String getBrand() {
         return brand;
@@ -46,14 +44,6 @@ public abstract class Transport<D extends Driver> {// D - обобщенный (
             this.engineVolume = 1.5;
         }
         return engineVolume;
-    }
-
-    public D getDriver() {
-        return driver;
-    }
-
-    public D setDriver(D driver) {
-        return driver;
     }
 
     @Override

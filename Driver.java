@@ -1,41 +1,25 @@
 package pro.sky.java.course2.transport;
 
 public class Driver {
-    final private String lastName;
-    private final String name;
-    private final String middleName;
-    private final String drivingLicense;
-    private final int drivingExperience;
+    public final String lastName;
+    public final String name;
+    public final String middleName;
+    public final String drivingLicense;
+    public final int drivingExperience;
 
     public Driver(String lastName, String name, String middleName, String drivingLicense, int drivingExperience) {
-        this.lastName = setLastName(lastName);
-        this.name = setName(name);
-        this.middleName = setMiddleName(middleName);
-        this.drivingLicense = setDrivingLicense(drivingLicense);
-        this.drivingExperience = setDrivingExperience(drivingExperience);
+        this.lastName = validateLastName(lastName);
+        this.name = validateName(name);
+        this.middleName = validateMiddleName(middleName);
+        this.drivingLicense = validateDrivingLicense(drivingLicense);
+        this.drivingExperience = validateDrivingExperience(drivingExperience);
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public String setLastName(String lastName) {
-        if (lastName == null || lastName.equals("")) {
-            System.out.println("Поле не может быть пустым или null. Введите фамилию.");
-            lastName = "default";
-        }
-        return lastName;
-    }
-
     public String getName() {
-        return middleName;
-    }
-
-    public String setName(String name) {
-        if (name == null || lastName.equals("")) {
-            System.out.println("Поле не может быть пустым или null. Введите имя.");
-            name = "default";
-        }
         return name;
     }
 
@@ -43,31 +27,43 @@ public class Driver {
         return middleName;
     }
 
-    public String setMiddleName(String middleName) {
-        if (middleName == null || lastName.equals("")) {
+    public String getDrivingLicense() {
+        return drivingLicense;
+    }
+
+    public int getDrivingExperience() {
+        return drivingExperience;
+    }
+
+    public String validateLastName(String lastName) {
+        if (lastName == null || lastName.equals("")) {
+            System.out.println("Поле не может быть пустым или null. Введите фамилию.");
+            lastName = "default";
+        }
+        return lastName;
+    }
+    public String validateName(String name) {
+        if (name == null || name.equals("")) {
+            System.out.println("Поле не может быть пустым или null. Введите имя.");
+            name = "default";
+        }
+        return name;
+    }
+    public String validateMiddleName(String middleName) {
+        if (middleName == null || middleName.equals("")) {
             System.out.println("Поле не может быть пустым или null. Введите отчество.");
             middleName = "default";
         }
         return middleName;
     }
-
-    public String getDrivingLicense() {
-        return drivingLicense;
-    }
-
-    public String setDrivingLicense(String drivingLicense) {
-        if (drivingLicense == null || lastName.equals("")) {
+    public String validateDrivingLicense(String drivingLicense) {
+        if (drivingLicense == null || drivingLicense.equals("")) {
             System.out.println("Поле не может быть пустым или null. Введите категорию водительских прав.");
             drivingLicense = "default";
         }
         return drivingLicense;
     }
-
-    public int DrivingExperience() {
-        return drivingExperience;
-    }
-
-    public int setDrivingExperience(int drivingExperience) {
+    public int validateDrivingExperience(int drivingExperience) {
         if (drivingExperience < 0) {
             System.out.println("Поле не может быть пустым или null. Введите водительский стаж больше или равен 0.");
             drivingExperience = 0;

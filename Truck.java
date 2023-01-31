@@ -3,7 +3,8 @@ package pro.sky.java.course2.transport;
 public class Truck<D extends Driver> extends Transport implements Racer{
     private D driver;
     public Truck(String brand, String model, double engineVolume, D driver) {
-        super(brand, model, engineVolume, driver);
+        super(brand, model, engineVolume);
+        this.driver = setDriver(driver);
     }
     @Override
     public void printPitStop() {
@@ -28,7 +29,13 @@ public class Truck<D extends Driver> extends Transport implements Racer{
     public void stop() {
         System.out.println("Грузовик остановил движение.");
     }
+    public D getDriver() {
+        return driver;
+    }
 
+    public D setDriver(D driver) {
+        return driver;
+    }
     @Override
     public String toString() {
         return "Грузовик: " + super.toString();

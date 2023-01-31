@@ -4,7 +4,8 @@ public class Bus<D extends Driver> extends Transport implements Racer{
     private D driver;
 
     public Bus(String brand, String model, double engineVolume, D driver) {
-        super(brand, model, engineVolume, driver);
+        super(brand, model, engineVolume);
+        this.driver = setDriver(driver);
     }
     @Override
     public void printPitStop() {
@@ -29,7 +30,13 @@ public class Bus<D extends Driver> extends Transport implements Racer{
     public void stop() {
         System.out.println("Автобус остановил движение.");
     }
+    public D getDriver() {
+        return driver;
+    }
 
+    public D setDriver(D driver) {
+        return driver;
+    }
     @Override
     public String toString() {
         return "Атобус: " + super.toString();
