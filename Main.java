@@ -13,19 +13,38 @@ public class Main {
         BusDriver busDriver = new BusDriver("busDriver", "A", "A", "D", 1);
         //Создаем автомобиль с водителем категории "В" и типом кузова - "Pickup".
         Car<CarDriver> car = new Car<>("Car", "C", 2.0, carDriver, CarBodyType.Pickup);
-        //Печатаем тип кузова машины
-        car.printType();
+//        //Печатаем тип кузова машины
+//        car.printType();
         //Получаем тип грузоподъёмности, для грузовика с грузоподъёмностью 10 тонн - N2 .
         TruckLoadCapacity truckLoadCapacity = TruckLoadCapacity.getTypeOfTruckLoadCapacity(10);
         // Создаем грузовик с водителем категории "С" и с грузоподъёмностью - N2 (3.5, 12).
         Truck<TruckDriver> truck = new Truck<>("Truck", "Truck" , 2.0, truckDriver, truckLoadCapacity);
-        //Печатаем грузоподъёмность грузовика.
-        truck.printType();
+//        //Печатаем грузоподъёмность грузовика.
+//        truck.printType();
         //Получаем тип пассажировместимости, для автобуса с количеством мест = 100 - "MEDIUM".
         BusCapacity busCapacity = BusCapacity.getTypeOfBusCapacity(100);
         /* Создаем автобус с водителем категории "D" и со средней пассажировместимостью - "MEDIUM". */
         Bus<BusDriver> bus = new Bus<>("Bus", "B", 2.0, busDriver, busCapacity);
-        //Печатаем пассажировместимость.
-        bus.printType();
+//        //Печатаем пассажировместимость.
+//        bus.printType();
+        /*
+        Решение задания по теме: ООП. Работа с исключениями.
+         */
+        try {
+            //Проводится диагностика для автомобиля.
+            car.executeDiagnostic();
+            System.out.println("Автомобиль завершил диагностику.");
+            //Проводится диагностика для грузовика.
+            truck.executeDiagnostic();
+            System.out.println("Грузовик завершил диагностику.");
+            //Проводится диагностика для автобуса.
+            bus.executeDiagnostic();
+            //Так как будет отловлено проверяемое исключение, то следующая строка кода не выполнится.
+            System.out.println("Автобус завершил диагностику.");
+        } catch (TransportTypeException e) {
+            //Выводим переданную информацию о причине возникновения исключения в форме ошибки.
+            System.err.println(e.getMessage());
+        }
+
     }
 }

@@ -43,6 +43,12 @@ public class Car<D extends Driver> extends Transport implements Racer {
         }
     }
 
+    @Override
+    public void executeDiagnostic() {
+        System.out.println("Автомобиль начал проходить диагностику.");
+
+    }
+
     public D getDriver() {
         return driver;
     }
