@@ -42,6 +42,11 @@ public class Bus<D extends Driver> extends Transport implements Racer{
         }
     }
 
+    @Override
+    public void executeDiagnostic() throws TransportTypeException {
+        throw  new TransportTypeException("Автобусы не должны проходить диагностику.");
+    }
+
     public D getDriver() {
         return driver;
     }
