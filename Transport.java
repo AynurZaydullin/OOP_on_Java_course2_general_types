@@ -8,7 +8,6 @@ public abstract class Transport {
     public abstract void stop();  // метод "Закончить движение".
     public abstract void printType();// метод "Печать типа транспортного средства".
     public abstract void executeDiagnostic() throws TransportTypeException;// метод "Выполнить диагностику".
-
     public Transport(String brand, String model, double engineVolume) {
         this.brand = brand;
         this.model = model;
