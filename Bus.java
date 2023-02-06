@@ -1,11 +1,14 @@
 package pro.sky.java.course2.transport;
+
+import java.util.ArrayList;
+
 // D - обобщенный (параметризованный) тип данных. Клас Bus реализует интерфейс Гонщик (соревнующийся) для Bus.
 public class Bus<D extends Driver> extends Transport implements Racer{
     private D driver;
     private BusCapacity busCapacity;
 
-    public Bus(String brand, String model, double engineVolume, D driver, BusCapacity busCapacity) {
-        super(brand, model, engineVolume);
+    public Bus(String brand, String model, double engineVolume, D driver, BusCapacity busCapacity, ArrayList<Mechanic> mechanic) {
+        super(brand, model, engineVolume, mechanic);
         this.driver = setDriver(driver);
         this.busCapacity = busCapacity;
     }
@@ -46,6 +49,12 @@ public class Bus<D extends Driver> extends Transport implements Racer{
     public void executeDiagnostic() throws TransportTypeException {
         throw  new TransportTypeException("Автобусы не должны проходить диагностику.");
     }
+
+    @Override
+    public boolean isDiagnosticsPermitted() {
+        return false;
+    }
+
 
     public D getDriver() {
         return driver;
