@@ -1,6 +1,7 @@
 package pro.sky.java.course2.transport;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 // D - обобщенный (параметризованный) тип данных. Клас Car реализует интерфейс Гонщик (соревнующийся) для Car.
 public class Car<D extends Driver> extends Transport implements Racer {
@@ -70,5 +71,18 @@ public class Car<D extends Driver> extends Transport implements Racer {
     @Override
     public String toString() {
         return "Легковой автомобиль: " + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car<?> car = (Car<?>) o;
+        return Objects.equals(driver, car.driver);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(driver);
     }
 }

@@ -2,6 +2,8 @@ package pro.sky.java.course2.transport;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Main {
@@ -68,7 +70,19 @@ public class Main {
         mechanic1.fixTransport(carArrayList.get(0));
         //Проводится диагностика транспорта, который находится в очереди
         transportServiceStation.transportService();
-//        //Механик с порядковым номером "0" чинит машину с порядковым номером "2".
+        //Механик с порядковым номером "0" чинит машину с порядковым номером "2".
         mechanicArrayList.get(0).repairTransport(carArrayList.get(2));
+
+        // --------Задание из раздела Map, HashMap----------
+        // Создаю ассоциативный словарь с помощью HashMap.
+        HashMap<Car, ArrayList<Mechanic>> carDriverHashMap = new HashMap<>();
+        // С помощью цикла заполняю словарь HashMap ключами (автомобилями из списка) и значениями (списком механиков).
+        for (int i = 0; i < carArrayList.size(); i++)
+            carDriverHashMap.put(carArrayList.get(i), mechanicArrayList);
+        // Вывожу в консоль элементы словаря с помощью цикла for each.
+        for (Car item : carDriverHashMap.keySet())
+            System.out.println(item + ": " + carDriverHashMap.get(item));
+        // Сначала получается множество с ключами. Затем на каждой итерации через переменную item доступен ключ,
+        // с помощью которого можно получить связанное с ним значение, передав ключ методу get().
     }
 }
