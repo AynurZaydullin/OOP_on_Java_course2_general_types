@@ -86,7 +86,7 @@ public class Main {
         System.out.println();
         System.out.println("Задание из раздела Set, Iterator.");
         // Создаю множество водителей, используя конструктор класса HashSet.
-        HashSet<CarDriver> nameSet = new HashSet<CarDriver>();
+        Set<CarDriver> nameSet = new HashSet<CarDriver>();
         // Добавляют в множество водителей, причём первого водителя я добавляю два раза.
         Collections.addAll(nameSet,carDriver1, carDriver1, carDriver2, carDriver3);
         // Однако в множестве не будут храниться повторяющиеся элементы. Поэтому будут выводиться только
